@@ -1,0 +1,1 @@
+These will create a file in current directory synchronously and add these data and it return something
