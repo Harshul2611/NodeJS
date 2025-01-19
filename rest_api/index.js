@@ -8,6 +8,16 @@ const PORT = 3003;
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+app.use((req, res, next) => {
+  fs.appendFile(
+    "logs.txt",
+    `\n${Date()}: ${req.method} ${req.path} `,
+    (err, result) => {
+      next();
+    }
+  );
+});
+
 app.get("/users", (req, res) => {
   const html = `
     <ul>
